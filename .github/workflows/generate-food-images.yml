@@ -1,4 +1,4 @@
-name:.github/workflows/generate-food-images.yml
+name: Generate food images
 # Run by hand from the GitHub app or Safari: Actions > Generate food images > Run workflow.
 on:
   workflow_dispatch:
