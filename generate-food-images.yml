@@ -1,0 +1,68 @@
+name: Generate food images
+# Run by hand from the GitHub app or Safari: Actions > Generate food images > Run workflow.
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Dry run (list what would be made, no cost). Untick to really generate."
+        type: boolean
+        default: true
+      batch_size:
+        description: "How many images this run (max 25)"
+        type: string
+        default: "3"
+      priority:
+        description: "Optional: 1 = dishes, 2 = recipes, 3 = ingredients (blank = all)"
+        type: string
+        default: ""
+      only_ids:
+        description: "Optional: only these ids, comma separated (blank = next in line)"
+        type: string
+        default: ""
+      force_ids:
+        description: "Optional: ids to REDO even though the file exists, comma separated"
+        type: string
+        default: ""
+permissions:
+  contents: write
+concurrency:
+  group: generate-food-images
+  cancel-in-progress: false
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm install --no-audit --no-fund
+      - name: Run generator
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          IN_DRY: ${{ inputs.dry_run }}
+          IN_LIMIT: ${{ inputs.batch_size }}
+          IN_PRIORITY: ${{ inputs.priority }}
+          IN_ONLY: ${{ inputs.only_ids }}
+          IN_FORCE: ${{ inputs.force_ids }}
+          OPENAI_IMAGE_MODEL: ${{ vars.OPENAI_IMAGE_MODEL }}
+        run: |
+          set -o pipefail
+          ARGS=(--limit "${IN_LIMIT:-3}")
+          [ -n "$IN_PRIORITY" ] && ARGS+=(--priority "$IN_PRIORITY")
+          [ -n "$IN_ONLY" ] && ARGS+=(--only "$IN_ONLY")
+          [ -n "$IN_FORCE" ] && ARGS+=(--force "$IN_FORCE")
+          [ "$IN_DRY" != "true" ] && ARGS+=(--run)
+          node generate-images.js "${ARGS[@]}" | tee run-output.txt
+          { echo '### Image generation'; echo '```'; cat run-output.txt; echo '```'; echo '```'; node generate-images.js --report; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+      - name: Save new images and log to the repository
+        if: ${{ inputs.dry_run != true }}
+        run: |
+          git config user.name "plateworth-imagegen"
+          git config user.email "imagegen@users.noreply.github.com"
+          git add assets/food
+          if git diff --cached --quiet; then echo "No changes to save."; else
+            git commit -m "Add generated food images (batch)"
+            git pull --rebase origin "${GITHUB_REF_NAME}" && git push origin "HEAD:${GITHUB_REF_NAME}"
+          fi
