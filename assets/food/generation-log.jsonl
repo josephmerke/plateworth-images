@@ -82,3 +82,13 @@
 {"time":"2026-11-24T23:28:55.591Z","id":"recipe:spiced-lentils-and-rice","file":"recipe-spiced-lentils-and-rice.webp","status":"ok","model":"gpt-image-2.5-flare","quality":"medium","size":"1536x1024","bytes":212280,"forced":false}
 {"time":"2026-11-24T23:29:05.874Z","id":"recipe:spicy-tuna-rice-bowl","file":"recipe-spicy-tuna-rice-bowl.webp","status":"ok","model":"gpt-image-2.5-flare","quality":"medium","size":"1536x1024","bytes":233758,"forced":false}
 {"time":"2026-11-24T23:29:17.316Z","id":"recipe:tuna-melt-toast","file":"recipe-tuna-melt-toast.webp","status":"ok","model":"gpt-image-2.5-flare","quality":"medium","size":"1536x1024","bytes":247630,"forced":false}
+{"time":"2026-11-24T23:45:08.056Z","id":"recipe:tuna-pasta","file":"recipe-tuna-pasta.webp","status":"ok","model":"gpt-image-2.5-flare","quality":"medium","size":"1536x1024","bytes":225404,"forced":false}
+{"time":"2026-11-24T23:45:20.408Z","id":"recipe:turkey-bean-chili","file":"recipe-turkey-bean-chili.webp","status":"ok","model":"gpt-image-2.5-flare","quality":"medium","size":"1536x1024","bytes":225974,"forced":false}
+{"time":"2026-11-24T23:45:31.726Z","id":"food:almonds","file":"ingredient-almonds.webp","status":"ok","model":"gpt-image-2.5-flare","quality":"medium","size":"1536x1024","bytes":204832,"forced":false}
+{"time":"2026-11-24T23:45:42.087Z","id":"food:apples","file":"ingredient-apples.webp","status":"ok","model":"gpt-image-2.5-flare","quality":"medium","size":"1536x1024","bytes":166622,"forced":false}
+{"time":"2026-11-24T23:45:52.986Z","id":"food:avocado","file":"ingredient-avocado.webp","status":"ok","model":"gpt-image-2.5-flare","quality":"medium","size":"1536x1024","bytes":200876,"forced":false}
+{"time":"2026-11-24T23:46:04.539Z","id":"food:bagel-plain","file":"ingredient-bagel-plain.webp","status":"ok","model":"gpt-image-2.5-flare","quality":"medium","size":"1536x1024","bytes":205552,"forced":false}
+{"time":"2026-11-24T23:46:16.057Z","id":"food:bananas","file":"ingredient-bananas.webp","status":"ok","model":"gpt-image-2.5-flare","quality":"medium","size":"1536x1024","bytes":162146,"forced":false}
+{"time":"2026-11-24T23:46:28.138Z","id":"food:black-beans-canned","file":"ingredient-black-beans-canned.webp","status":"ok","model":"gpt-image-2.5-flare","quality":"medium","size":"1536x1024","bytes":216288,"forced":false}
+{"time":"2026-11-24T23:46:39.520Z","id":"food:bread","file":"ingredient-bread.webp","status":"ok","model":"gpt-image-2.5-flare","quality":"medium","size":"1536x1024","bytes":217788,"forced":false}
+{"time":"2026-11-24T23:47:31.462Z","id":"food:canned-tuna","file":"ingredient-canned-tuna.webp","status":"ok","model":"gpt-image-2.5-flare","quality":"medium","size":"1536x1024","bytes":201134,"forced":false}
